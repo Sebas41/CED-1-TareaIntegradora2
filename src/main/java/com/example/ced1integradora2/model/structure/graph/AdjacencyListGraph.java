@@ -1,15 +1,15 @@
-package model.structure.graph;
+package com.example.ced1integradora2.model.structure.graph;
 
-import model.exceptions.GraphIsNotWeightedException;
-import model.exceptions.GraphTypeNotAllowed;
-import model.structure.tree.NaryTree;
-import model.template.IGraph;
+import com.example.ced1integradora2.model.exceptions.GraphIsNotWeightedException;
+import com.example.ced1integradora2.model.exceptions.GraphTypeNotAllowed;
+import com.example.ced1integradora2.model.structure.tree.NaryTree;
+import com.example.ced1integradora2.model.template.IGraph;
 
 import java.util.*;
 
 public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
 
-    private ArrayList<Vertex<T>> vertexes;
+    private ArrayList<AdjacencyListGraphVertex<T>> vertexes;
     private ArrayList<Edge<T>> edges;
     private boolean hasWeight;
     private boolean isDirected;
@@ -24,10 +24,10 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     @Override
     public boolean addVertex(T value) {
         boolean status = false;
-        Vertex<T> existVertex = searchVertex(value);
+        AdjacencyListGraphVertex<T> existVertex = castVertex(value);
 
         if(existVertex==null){
-            vertexes.add(new Vertex<T>(value));
+            vertexes.add(new AdjacencyListGraphVertex<T>(value));
             status = true;
         }
         return status;
@@ -38,8 +38,8 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         boolean status = false;
 
         if(hasWeight){
-            Vertex<T> referenceSource = searchVertex(source);
-            Vertex<T> referenceDestination = searchVertex(destination);
+            AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
+            AdjacencyListGraphVertex<T> referenceDestination = castVertex(destination);
 
             if(referenceSource!=null && referenceDestination!=null){
                 Edge<T> edge = new Edge<>(referenceSource,referenceDestination,weight);
@@ -63,8 +63,8 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     @Override
     public boolean addEdge(T source, T destination) {
         boolean status = false;
-        Vertex<T> referenceSource = searchVertex(source);
-        Vertex<T> referenceDestination = searchVertex(destination);
+        AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
+        AdjacencyListGraphVertex<T> referenceDestination = castVertex(destination);
 
         if(referenceSource!=null && referenceDestination!=null){
             if(hasWeight){
@@ -103,7 +103,7 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     public boolean deleteVertex(T goal) {
         boolean status = false;
 
-        Vertex<T> vertex = searchVertex(goal);
+        AdjacencyListGraphVertex<T> vertex = castVertex(goal);
 
         if(vertexes.contains(vertex)){
             ArrayList<Edge<T>> edgesTemp = vertexes.get(vertexes.indexOf(vertex)).getEdges();
@@ -126,8 +126,8 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         boolean status = false;
 
         if(hasWeight){
-            Vertex<T> fromVertex = searchVertex(from);
-            Vertex<T> toVertex = searchVertex(to);
+            AdjacencyListGraphVertex<T> fromVertex = castVertex(from);
+            AdjacencyListGraphVertex<T> toVertex = castVertex(to);
             Edge<T> edge = new Edge<>(fromVertex,toVertex,weight);
             status = edges.remove(edge);
             if(status){
@@ -148,8 +148,8 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     @Override
     public boolean deleteEdge(T from, T to){
         boolean status = false;
-        Vertex<T> fromVertex = searchVertex(from);
-        Vertex<T> toVertex = searchVertex(to);
+        AdjacencyListGraphVertex<T> fromVertex = castVertex(from);
+        AdjacencyListGraphVertex<T> toVertex = castVertex(to);
         Edge<T> edge;
 
         if(hasWeight){
@@ -185,11 +185,11 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
 
     @Override
     public NaryTree<T> bfs(T source) {
-        Vertex<T> referenceSource = searchVertex(source);
+        AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
         NaryTree<T> naryTree = new NaryTree<>();
 
         if(referenceSource!=null){
-            for(Vertex<T> vertex : vertexes){
+            for(AdjacencyListGraphVertex<T> vertex : vertexes){
                 if(vertex!=referenceSource){
                     vertex.setColorType(ColorType.WHITE);
                     vertex.setDistance(Double.MAX_VALUE);
@@ -198,11 +198,11 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
                 referenceSource.setColorType(ColorType.GRAY);
                 referenceSource.setDistance(0.0);
                 referenceSource.setPredecesor(null);
-                Queue<Vertex<T>> queue = new LinkedList<>();
+                Queue<AdjacencyListGraphVertex<T>> queue = new LinkedList<>();
                 queue.offer(referenceSource);
                 naryTree.add(referenceSource.getValue(), null);
                 while (!queue.isEmpty()){
-                    Vertex<T> temp = queue.poll();
+                    AdjacencyListGraphVertex<T> temp = queue.poll();
                     for(int i = 0; i<temp.getEdges().size(); i++){
                         if(temp.getEdges().get(i).getTo().getColorType().equals(ColorType.WHITE)){
                             temp.getEdges().get(i).getTo().setColorType(ColorType.GRAY);
@@ -224,14 +224,14 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
 
     @Override
     public ArrayList<NaryTree<T>> dfs() {
-        for (Vertex<T> vertex: vertexes){
+        for (AdjacencyListGraphVertex<T> vertex: vertexes){
             vertex.setColorType(ColorType.WHITE);
             vertex.setPredecesor(null);
         }
 
         ArrayList<NaryTree<T>> forest = new ArrayList<>();
 
-        for (Vertex<T> vertex: vertexes){
+        for (AdjacencyListGraphVertex<T> vertex: vertexes){
             if (vertex.getColorType().equals(ColorType.WHITE)){
                 NaryTree<T> tree = new NaryTree<>();
                 dfsVisit(vertex, tree);
@@ -243,7 +243,7 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     }
 
     @Override
-    public void dfsVisit(Vertex<T> source, NaryTree<T> tree) {
+    public void dfsVisit(AdjacencyListGraphVertex<T> source, NaryTree<T> tree) {
         source.setColorType(ColorType.GRAY);
         T temp = null;
         if(source.getPredecesor() != null) {
@@ -260,9 +260,9 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     }
 
     @Override
-    public Vertex<T> searchVertex(T goal) {
-        Vertex<T> toReturn = null;
-        for(Vertex<T> vertex : vertexes){
+    public GraphVertex<T> searchVertex(T goal) {
+        AdjacencyListGraphVertex<T> toReturn = null;
+        for(AdjacencyListGraphVertex<T> vertex : vertexes){
             if(vertex.getValue().compareTo(goal)==0){
                 toReturn = vertex;
             }
@@ -270,17 +270,21 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         return toReturn;
     }
 
-    @Override
-    public  Map<Vertex<T>,Double> dijkstraDistances(T source) throws GraphIsNotWeightedException {
-        if(hasWeight){
-            Vertex<T> referenceSource = searchVertex(source);
+    public AdjacencyListGraphVertex<T> castVertex(T goal){
+        return (AdjacencyListGraphVertex<T>) searchVertex(goal);
+    }
 
-            Map<Vertex<T>, Double> distances = new HashMap<>();
-            Set<Vertex<T>> visited = new HashSet<>();
-            PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
+    @Override
+    public  Map<AdjacencyListGraphVertex<T>,Double> dijkstraDistances(T source) throws GraphIsNotWeightedException {
+        if(hasWeight){
+            AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
+
+            Map<AdjacencyListGraphVertex<T>, Double> distances = new HashMap<>();
+            Set<AdjacencyListGraphVertex<T>> visited = new HashSet<>();
+            PriorityQueue<AdjacencyListGraphVertex<T>> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
 
             distances.put(referenceSource,0.0);
-            for(Vertex<T> vertex : vertexes){
+            for(AdjacencyListGraphVertex<T> vertex : vertexes){
                 if(vertex!=referenceSource){
                     distances.put(vertex,Double.MAX_VALUE);
                 }
@@ -288,10 +292,10 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
             }
 
             while(!priorityQueue.isEmpty()){
-                Vertex<T> temp = priorityQueue.poll();
+                AdjacencyListGraphVertex<T> temp = priorityQueue.poll();
                 visited.add(temp);
                 for(Edge<T> edge : temp.getEdges()){
-                    Vertex<T> adjacency = edge.getTo();
+                    AdjacencyListGraphVertex<T> adjacency = edge.getTo();
                     if(!visited.contains(adjacency)){
                         Double alt = distances.get(temp) + edge.getWeight();
                         if(alt<distances.get(adjacency)){
@@ -311,17 +315,17 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     }
 
     @Override
-    public  Map<Vertex<T>,Vertex<T>> dijkstraPredecesors(T source) throws GraphIsNotWeightedException {
+    public  Map<AdjacencyListGraphVertex<T>, AdjacencyListGraphVertex<T>> dijkstraPredecesors(T source) throws GraphIsNotWeightedException {
         if(hasWeight){
-            Vertex<T> referenceSource = searchVertex(source);
+            AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
 
-            Map<Vertex<T>, Double> distances = new HashMap<>();
-            Map<Vertex<T>, Vertex<T>> previous = new HashMap<>();
-            Set<Vertex<T>> visited = new HashSet<>();
-            PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
+            Map<AdjacencyListGraphVertex<T>, Double> distances = new HashMap<>();
+            Map<AdjacencyListGraphVertex<T>, AdjacencyListGraphVertex<T>> previous = new HashMap<>();
+            Set<AdjacencyListGraphVertex<T>> visited = new HashSet<>();
+            PriorityQueue<AdjacencyListGraphVertex<T>> priorityQueue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
 
             distances.put(referenceSource,0.0);
-            for(Vertex<T> vertex : vertexes){
+            for(AdjacencyListGraphVertex<T> vertex : vertexes){
                 if(vertex!=referenceSource){
                     distances.put(vertex,Double.MAX_VALUE);
                 }
@@ -330,10 +334,10 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
             }
 
             while(!priorityQueue.isEmpty()){
-                Vertex<T> temp = priorityQueue.poll();
+                AdjacencyListGraphVertex<T> temp = priorityQueue.poll();
                 visited.add(temp);
                 for(Edge<T> edge : temp.getEdges()){
-                    Vertex<T> adjacency = edge.getTo();
+                    AdjacencyListGraphVertex<T> adjacency = edge.getTo();
                     if(!visited.contains(adjacency)){
                         Double alt = distances.get(temp) + edge.getWeight();
                         if(alt<distances.get(adjacency)){
@@ -371,9 +375,9 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
             }
 
             for (int i = 0; i < length; i++) {
-                Vertex<T> sourceVertex = vertexes.get(i);
+                AdjacencyListGraphVertex<T> sourceVertex = vertexes.get(i);
                 for (Edge<T> edge : sourceVertex.getEdges()) {
-                    Vertex<T> destVertex = edge.getTo();
+                    AdjacencyListGraphVertex<T> destVertex = edge.getTo();
                     int destIndex = vertexes.indexOf(destVertex);
                     distances[i][destIndex] = edge.getWeight();
                 }
@@ -396,25 +400,25 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     }
 
     @Override
-    public NaryTree<Vertex<T>> prim(T source) throws GraphIsNotWeightedException, GraphTypeNotAllowed{
+    public NaryTree<AdjacencyListGraphVertex<T>> prim(T source) throws GraphIsNotWeightedException, GraphTypeNotAllowed{
 
         if(!isDirected){
             if(hasWeight){
-                Vertex<T> referenceSource = searchVertex(source);
-                NaryTree<Vertex<T>> naryTree = new NaryTree<>();
+                AdjacencyListGraphVertex<T> referenceSource = castVertex(source);
+                NaryTree<AdjacencyListGraphVertex<T>> naryTree = new NaryTree<>();
 
                 if(referenceSource!=null){
-                    for(Vertex<T> vertex : vertexes){
+                    for(AdjacencyListGraphVertex<T> vertex : vertexes){
                         vertex.setDistance(Double.MAX_VALUE);
                         vertex.setColorType(ColorType.WHITE);
                     }
                     referenceSource.setDistance(0.0);
                     referenceSource.setPredecesor(null);
 
-                    PriorityQueue<Vertex<T>> priorityQueue = new PriorityQueue<>(vertexes);
+                    PriorityQueue<AdjacencyListGraphVertex<T>> priorityQueue = new PriorityQueue<>(vertexes);
 
                     while(!priorityQueue.isEmpty()){
-                        Vertex<T> u = priorityQueue.poll();
+                        AdjacencyListGraphVertex<T> u = priorityQueue.poll();
 
                         for(Edge<T> edge : u.getEdges()){
                             if(edge.getTo().getColorType().equals(ColorType.WHITE) && edge.getWeight()<edge.getTo().getDistance()){
@@ -451,8 +455,8 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
                 edges.sort(Edge::compareTo);
 
                 for(Edge<T> edge : edges){
-                    Vertex<T> u = edge.getFrom();
-                    Vertex<T> v = edge.getTo();
+                    AdjacencyListGraphVertex<T> u = edge.getFrom();
+                    AdjacencyListGraphVertex<T> v = edge.getTo();
                     if(unionFind.find(u.getValue())!=unionFind.find(v.getValue())){
                         array.add(edge);
                         unionFind.union(u.getValue(),v.getValue());
@@ -467,11 +471,11 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         }
     }
 
-    public ArrayList<Vertex<T>> getVertexes() {
+    public ArrayList<AdjacencyListGraphVertex<T>> getVertexes() {
         return vertexes;
     }
 
-    public void setVertexes(ArrayList<Vertex<T>> vertexes) {
+    public void setVertexes(ArrayList<AdjacencyListGraphVertex<T>> vertexes) {
         this.vertexes = vertexes;
     }
 

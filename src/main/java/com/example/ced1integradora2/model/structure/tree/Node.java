@@ -1,4 +1,4 @@
-package model.structure.tree;
+package com.example.ced1integradora2.model.structure.tree;
 
 import java.util.ArrayList;
 

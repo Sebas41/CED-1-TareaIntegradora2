@@ -1,8 +1,10 @@
-package model.template;
+package com.example.ced1integradora2.model.template;
 
-import model.structure.graph.Edge;
-import model.structure.graph.Vertex;
-import model.structure.tree.NaryTree;
+import com.example.ced1integradora2.model.structure.graph.AdjacencyMatrixGraphVertex;
+import com.example.ced1integradora2.model.structure.graph.Edge;
+import com.example.ced1integradora2.model.structure.graph.AdjacencyListGraphVertex;
+import com.example.ced1integradora2.model.structure.graph.GraphVertex;
+import com.example.ced1integradora2.model.structure.tree.NaryTree;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -15,13 +17,13 @@ public interface IGraph<T extends Comparable<T>> {
     public boolean deleteVertex(T t);
     public boolean deleteEdge(T from, T to, Double weight);
     public boolean deleteEdge(T from, T to);
+    public GraphVertex<T> searchVertex(T goal);
     public NaryTree<T> bfs(T source);
     public ArrayList<NaryTree<T>> dfs();
-    public void dfsVisit(Vertex<T> source, NaryTree<T> tree);
-    public Vertex<T> searchVertex(T t);
-    public Map<Vertex<T>,Double> dijkstraDistances(T source);
-    public Map<Vertex<T>,Vertex<T>> dijkstraPredecesors(T source);
+    public void dfsVisit(AdjacencyListGraphVertex<T> source, NaryTree<T> tree);
+    public Map<AdjacencyListGraphVertex<T>,Double> dijkstraDistances(T source);
+    public Map<AdjacencyListGraphVertex<T>, AdjacencyListGraphVertex<T>> dijkstraPredecesors(T source);
     public Double[][] floydWarshall();//El tamaño del grafo lo tengo dentro de la implementación
-    public NaryTree<Vertex<T>> prim(T source);
+    public NaryTree<AdjacencyListGraphVertex<T>> prim(T source);
     public ArrayList<Edge<T>> kruskal();
 }

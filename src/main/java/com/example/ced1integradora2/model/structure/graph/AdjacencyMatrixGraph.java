@@ -1,17 +1,51 @@
-package model.structure.graph;
+package com.example.ced1integradora2.model.structure.graph;
 
-import model.structure.tree.NaryTree;
-import model.template.IGraph;
+import com.example.ced1integradora2.model.structure.tree.NaryTree;
+import com.example.ced1integradora2.model.template.IGraph;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> {
 
+    private Map<T, Integer> vertexesPositions;
+    private ArrayList<Edge<T>> edges;
+    private ArrayList<AdjacencyMatrixGraphVertex<T>> vertexes;
+    private ArrayList<Double>[][] matrix;
+    private int vertexNumber;
+    private int currentVertexNumber;
+    private boolean hasWeight;
+    private boolean isDirected;
+
+    public AdjacencyMatrixGraph(int vertexNumber, boolean hasWeight, boolean isDirected){
+        this.vertexNumber = vertexNumber;
+        this.vertexesPositions = new HashMap<>();
+        this.edges = new ArrayList<>();
+        this.vertexes = new ArrayList<>();
+        this.hasWeight = hasWeight;
+        this.isDirected = isDirected;
+        this.currentVertexNumber = 0;
+
+        matrix = new ArrayList[this.vertexNumber][this.vertexNumber];
+        for(int i = 0; i<this.vertexNumber; i++){
+            for(int j = 0; j<this.vertexNumber; j++){
+                matrix[i][j] = new ArrayList<>();
+            }
+        }
+    }
     
     @Override
-    public boolean addVertex(T t) {
-        return false;
+    public boolean addVertex(T value) {
+        boolean status = false;
+        AdjacencyMatrixGraphVertex<T> existVertex = castVertex(value);
+
+        if(existVertex==null){
+            vertexes.add(new AdjacencyMatrixGraphVertex<>(value));
+            vertexesPositions.put(value,currentVertexNumber++);
+            status = true;
+        }
+        return status;
     }
 
     @Override
@@ -51,22 +85,32 @@ public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> 
     }
 
     @Override
-    public void dfsVisit(Vertex<T> source, NaryTree<T> tree) {
+    public void dfsVisit(AdjacencyListGraphVertex<T> source, NaryTree<T> tree) {
 
     }
 
     @Override
-    public Vertex<T> searchVertex(T t) {
+    public GraphVertex<T> searchVertex(T goal) {
+        AdjacencyMatrixGraphVertex<T> toReturn = null;
+        for(AdjacencyMatrixGraphVertex<T> vertex : vertexes){
+            if(vertex.getValue().compareTo(goal)==0){
+                toReturn = vertex;
+            }
+        }
+        return toReturn;
+    }
+
+    public AdjacencyMatrixGraphVertex<T> castVertex(T goal){
+        return (AdjacencyMatrixGraphVertex<T>) searchVertex(goal);
+    }
+
+    @Override
+    public Map<AdjacencyListGraphVertex<T>, Double> dijkstraDistances(T source) {
         return null;
     }
 
     @Override
-    public Map<Vertex<T>, Double> dijkstraDistances(T source) {
-        return null;
-    }
-
-    @Override
-    public Map<Vertex<T>, Vertex<T>> dijkstraPredecesors(T source) {
+    public Map<AdjacencyListGraphVertex<T>, AdjacencyListGraphVertex<T>> dijkstraPredecesors(T source) {
         return null;
     }
 
@@ -76,7 +120,7 @@ public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> 
     }
 
     @Override
-    public NaryTree<Vertex<T>> prim(T source) {
+    public NaryTree<AdjacencyListGraphVertex<T>> prim(T source) {
         return null;//No hacer nada
     }
 

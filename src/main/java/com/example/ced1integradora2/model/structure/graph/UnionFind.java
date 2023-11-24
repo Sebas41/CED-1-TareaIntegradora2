@@ -1,4 +1,4 @@
-package model.structure.graph;
+package com.example.ced1integradora2.model.structure.graph;
 
 import java.util.HashMap;
 import java.util.Map;
