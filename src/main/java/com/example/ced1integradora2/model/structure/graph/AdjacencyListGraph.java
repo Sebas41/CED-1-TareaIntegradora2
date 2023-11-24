@@ -486,4 +486,12 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
     public void setHasWeight(boolean hasWeight) {
         this.hasWeight = hasWeight;
     }
+
+    public ArrayList<Edge<T>> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(ArrayList<Edge<T>> edges) {
+        this.edges = edges;
+    }
 }
