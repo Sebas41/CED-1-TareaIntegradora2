@@ -8,19 +8,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage){
-        openWindow("hello-view.fxml");
+        openWindow("main-view.fxml", 600, 402);
     }
 
     @FXML
-    public void openWindow(String fxml) {
+    public void openWindow(String fxml, double v, double v1) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
+            Scene scene = new Scene(fxmlLoader.load(), v, v1);
             Stage stage = new Stage();
-            stage.setTitle("Hello!");
+            stage.setTitle("¡La Odisea de Tom!");
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
