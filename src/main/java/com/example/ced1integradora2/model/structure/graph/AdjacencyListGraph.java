@@ -128,21 +128,39 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         if(hasWeight){
             AdjacencyListGraphVertex<T> fromVertex = castVertex(from);
             AdjacencyListGraphVertex<T> toVertex = castVertex(to);
-            Edge<T> edge = new Edge<>(fromVertex,toVertex,weight);
+            Edge<T> edge = searchEdge(fromVertex,toVertex,weight);
             status = edges.remove(edge);
             if(status){
                 status = fromVertex.deleteEdge(edge);
             }
             if(!isDirected){
-                Edge<T> edge1 = new Edge<>(toVertex,fromVertex,weight);
+                Edge<T> edge1 = searchEdge(toVertex,fromVertex,weight);
                 status = edges.remove(edge);
                 if(status){
-                    status = toVertex.deleteEdge(edge);
+                    status = toVertex.deleteEdge(edge1);
                 }
             }
         }
 
         return status;
+    }
+
+    public Edge<T> searchEdge(AdjacencyListGraphVertex<T> fromVertex, AdjacencyListGraphVertex<T> toVertex, Double weight){
+        for(Edge<T> edge : edges){
+            if(edge.getFrom().equals(fromVertex) && edge.getTo().equals(toVertex) && edge.getWeight().equals(weight)){
+                return edge;
+            }
+        }
+        return null;
+    }
+
+    public Edge<T> searchEdge(AdjacencyListGraphVertex<T> fromVertex, AdjacencyListGraphVertex<T> toVertex){
+        for(Edge<T> edge : edges){
+            if(edge.getFrom().equals(fromVertex) && edge.getTo().equals(toVertex)){
+                return edge;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -153,29 +171,29 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
         Edge<T> edge;
 
         if(hasWeight){
-            edge = new Edge<>(fromVertex,toVertex,0.0);
+            edge = searchEdge(fromVertex,toVertex,0.0);
             status = edges.remove(edge);
             if(status){
                 status = fromVertex.deleteEdge(edge);
             }
             if(!isDirected){
-                Edge<T> edge1 = new Edge<>(toVertex,fromVertex,0.0);
+                Edge<T> edge1 = searchEdge(toVertex,fromVertex,0.0);
                 status = edges.remove(edge);
                 if(status){
-                    status = toVertex.deleteEdge(edge);
+                    status = toVertex.deleteEdge(edge1);
                 }
             }
         }else{
-            edge = new Edge<>(fromVertex,toVertex);
+            edge = searchEdge(fromVertex,toVertex);
             status = edges.remove(edge);
             if(status){
                 status = fromVertex.deleteEdge(edge);
             }
             if(!isDirected){
-                Edge<T> edge1 = new Edge<>(toVertex,fromVertex);
+                Edge<T> edge1 = searchEdge(toVertex,fromVertex);
                 status = edges.remove(edge);
                 if(status){
-                    status = toVertex.deleteEdge(edge);
+                    status = toVertex.deleteEdge(edge1);
                 }
             }
         }

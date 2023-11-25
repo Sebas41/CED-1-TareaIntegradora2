@@ -181,23 +181,86 @@ public class AdjacencyListGraphTest {
     public void removeVertexOfGraphWithWeightNotDirected(){
         setUpGraphWithWeightNotDirected();
 
-        graph1.addVertex(14);
-        assertEquals(11,graph1.getVertexes().size());
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(8,graph1.getEdges().size());
     }
 
     @Test
     public void removeVertexOfGraphWithoutWeightDirected(){
         setUpGraphWithoutWeightDirected();
 
-        graph1.addVertex(14);
-        assertEquals(11,graph1.getVertexes().size());
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(4,graph1.getEdges().size());
     }
 
     @Test
     public void removeVertexOfGraphWithoutWeightNotDirected(){
         setUpGraphWithoutWeightNotDirected();
 
-        graph1.addVertex(14);
-        assertEquals(11,graph1.getVertexes().size());
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(8,graph1.getEdges().size());
+    }
+    //--------------------------------------------------------------------------------------------
+    //Remove edges of graph tests
+    @Test
+    public void removeEdgeOfGraphWithWeightDirected(){
+        setUpGraphWithWeightDirected();
+
+        boolean status = graph1.deleteEdge(3,4,9.0);
+        assertFalse(status);
+        graph1.addEdge(3,4,12.2);
+        assertEquals(6,graph1.getEdges().size());
+        status = graph1.deleteEdge(3,4,12.2);
+        assertTrue(status);
+        assertEquals(10,graph1.getVertexes().size());
+        assertEquals(5,graph1.getEdges().size());
+    }
+
+    @Test
+    public void removeEdgeOfGraphWithWeightNotDirected(){
+        setUpGraphWithWeightNotDirected();
+
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(8,graph1.getEdges().size());
+    }
+
+    @Test
+    public void removeEdgeOfGraphWithoutWeightDirected(){
+        setUpGraphWithoutWeightDirected();
+
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(4,graph1.getEdges().size());
+    }
+
+    @Test
+    public void removeEdgeOfGraphWithoutWeightNotDirected(){
+        setUpGraphWithoutWeightNotDirected();
+
+        boolean status = graph1.deleteVertex(14);
+        assertFalse(status);
+        status = graph1.deleteVertex(1);
+        assertTrue(status);
+        assertEquals(9,graph1.getVertexes().size());
+        assertEquals(8,graph1.getEdges().size());
     }
 }
