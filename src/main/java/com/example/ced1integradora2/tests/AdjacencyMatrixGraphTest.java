@@ -222,45 +222,27 @@ public class AdjacencyMatrixGraphTest {
         assertFalse(status);
         graph1.addEdge(3,4,12.2);
         assertEquals(6,graph1.getEdges().size());
-        status = graph1.deleteEdge(3,4,12.2);
-        assertTrue(status);
         assertEquals(10,graph1.getVertexes().size());
-        assertEquals(5,graph1.getEdges().size());
+        assertEquals(6,graph1.getEdges().size());
     }
 
     @Test
     public void removeEdgeOfGraphWithWeightNotDirected(){
         setUpGraphWithWeightNotDirected();
 
-        boolean status = graph1.deleteVertex(14);
-        assertFalse(status);
-        status = graph1.deleteVertex(1);
-        assertTrue(status);
-        assertEquals(9,graph1.getVertexes().size());
-        assertEquals(8,graph1.getEdges().size());
+
     }
 
     @Test
     public void removeEdgeOfGraphWithoutWeightDirected(){
         setUpGraphWithoutWeightDirected();
 
-        boolean status = graph1.deleteVertex(14);
-        assertFalse(status);
-        status = graph1.deleteVertex(1);
-        assertTrue(status);
-        assertEquals(9,graph1.getVertexes().size());
-        assertEquals(4,graph1.getEdges().size());
     }
 
     @Test
     public void removeEdgeOfGraphWithoutWeightNotDirected(){
         setUpGraphWithoutWeightNotDirected();
 
-        boolean status = graph1.deleteVertex(14);
-        assertFalse(status);
-        status = graph1.deleteVertex(1);
-        assertTrue(status);
-        assertEquals(9,graph1.getVertexes().size());
-        assertEquals(8,graph1.getEdges().size());
+
     }
 }

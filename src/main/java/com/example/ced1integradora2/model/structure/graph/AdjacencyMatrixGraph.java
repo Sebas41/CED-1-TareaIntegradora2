@@ -86,7 +86,7 @@ public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> 
         boolean status = false;
 
         AdjacencyMatrixGraphVertex<T> vertexSource = castVertex(source);
-        AdjacencyMatrixGraphVertex<T> vertexDestination = castVertex(source);
+        AdjacencyMatrixGraphVertex<T> vertexDestination = castVertex(destination);
 
         if(hasWeight){
             if(vertexSource!=null && vertexDestination!=null){
@@ -129,11 +129,13 @@ public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> 
                 matrix[positionTemp][i].clear();
                 matrix[i][positionTemp].clear();
             }
+            ArrayList<Edge<T>> edgesToRemove = new ArrayList<>();
             for(Edge<T> edge : edges){
                 if(edge.getFrom()==temp || edge.getTo()==temp){
-                    edges.remove(edge);
+                    edgesToRemove.add(edge);
                 }
             }
+            edges.removeAll(edgesToRemove);
             vertexesPositions.remove(temp);
             availableNumbers.offer(positionTemp);
             vertexes.remove(temp);
@@ -151,11 +153,19 @@ public class AdjacencyMatrixGraph<T extends Comparable<T>> implements IGraph<T> 
 
         if(hasWeight){
             if(vertexFrom!=null && vertexTo!=null){
-                status = matrix[vertexesPositions.get(vertexFrom)][vertexesPositions.get(vertexTo)].remove(weight);
-                if(status) edges.remove(searchEdge(vertexFrom,vertexTo,weight));
+                int fromIndex = vertexesPositions.get(vertexFrom);
+                int toIndex = vertexesPositions.get(vertexTo);
+                status = matrix[fromIndex][toIndex].remove(weight);
+                if(status){
+                    Edge<T> temp1 = searchEdge(vertexFrom,vertexTo,weight);
+                    edges.remove(temp1);
+                }
                 if(!isDirected){
-                    status = matrix[vertexesPositions.get(vertexTo)][vertexesPositions.get(vertexFrom)].remove(weight);
-                    if(status) edges.remove(searchEdge(vertexTo,vertexFrom,weight));
+                    status &= matrix[toIndex][fromIndex].remove(weight);
+                    if(status){
+                        Edge<T> temp2 = searchEdge(vertexTo,vertexFrom,weight);
+                        edges.remove(temp2);
+                    }
                 }
             }
         }
