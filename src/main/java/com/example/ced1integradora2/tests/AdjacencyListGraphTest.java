@@ -652,20 +652,17 @@ public class AdjacencyListGraphTest {
     // Returns an ArrayList of edges for an undirected, weighted graph with no isolated vertices
     @Test
     public void test_undirected_weighted_graph_no_isolated_vertices() {
-        AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>(true, false);
-        graph.addVertex(1);
-        graph.addVertex(2);
-        graph.addVertex(3);
-        graph.addEdge(1, 2, 5.0);
-        graph.addEdge(2, 3, 3.0);
-        graph.addEdge(1, 3, 4.0);
-
+        setUpGraphWithWeightNotDirected();
         ArrayList<Edge<Integer>> expected = new ArrayList<>();
-        expected.add(new Edge<>(graph.searchVertex(2), graph.searchVertex(3), 3.0));
-        expected.add(new Edge<>(graph.searchVertex(1), graph.searchVertex(3), 4.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(9), graph1.castVertex(7), 1.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(1), graph1.castVertex(2), 2.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(5), graph1.castVertex(4), 3.45));
+        expected.add(graph1.searchEdge(graph1.castVertex(2), graph1.castVertex(3), 5.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(0), graph1.castVertex(6), 6.99));
+
 
         try {
-            ArrayList<Edge<Integer>> result = graph.kruskal();
+            ArrayList<Edge<Integer>> result = graph1.kruskal();
             assertEquals(expected, result);
         } catch (GraphIsNotWeightedException | GraphTypeNotAllowed e) {
             fail("Unexpected exception thrown");
@@ -693,16 +690,17 @@ public class AdjacencyListGraphTest {
     // Returns an ArrayList with a single edge for an undirected, weighted graph with two vertices and one edge
     @Test
     public void test_undirected_weighted_graph_two_vertices_one_edge() {
-        AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>(true, false);
-        graph.addVertex(1);
-        graph.addVertex(2);
-        graph.addEdge(1, 2, 5.0);
+        setUpGraphWithWeightNotDirected();
 
         ArrayList<Edge<Integer>> expected = new ArrayList<>();
-        expected.add(new Edge<>(graph.searchVertex(1), graph.searchVertex(2), 5.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(9), graph1.castVertex(7), 1.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(1), graph1.castVertex(2), 2.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(5), graph1.castVertex(4), 3.45));
+        expected.add(graph1.searchEdge(graph1.castVertex(2), graph1.castVertex(3), 5.0));
+        expected.add(graph1.searchEdge(graph1.castVertex(0), graph1.castVertex(6), 6.99));
 
         try {
-            ArrayList<Edge<Integer>> result = graph.kruskal();
+            ArrayList<Edge<Integer>> result = graph1.kruskal();
             assertEquals(expected, result);
         } catch (GraphIsNotWeightedException | GraphTypeNotAllowed e) {
             fail("Unexpected exception thrown");
