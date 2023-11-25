@@ -1,6 +1,9 @@
 package com.example.ced1integradora2.tests;
 
+import com.example.ced1integradora2.model.structure.graph.AdjacencyListGraph;
 import com.example.ced1integradora2.model.structure.graph.AdjacencyMatrixGraph;
+import com.example.ced1integradora2.model.structure.tree.NaryTree;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
