@@ -1,34 +1,34 @@
 package com.example.ced1integradora2.model.structure.graph;
 
 public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
-    private AdjacencyListGraphVertex<T> from;
-    private AdjacencyListGraphVertex<T> to;
+    private GraphVertex<T> from;
+    private GraphVertex<T> to;
     private Double weight;
 
-    public Edge(AdjacencyListGraphVertex<T> from, AdjacencyListGraphVertex<T> to){
+    public Edge(GraphVertex<T> from, GraphVertex<T> to){
         this.from = from;
         this.to = to;
     }
 
-    public Edge(AdjacencyListGraphVertex<T> from, AdjacencyListGraphVertex<T> to, Double weight) {
+    public Edge(GraphVertex<T> from, GraphVertex<T> to, Double weight) {
         this.from = from;
         this.to = to;
         this.weight = weight;
     }
 
-    public AdjacencyListGraphVertex<T> getFrom() {
+    public GraphVertex<T> getFrom() {
         return from;
     }
 
-    public void setFrom(AdjacencyListGraphVertex<T> from) {
+    public void setFrom(GraphVertex<T> from) {
         this.from = from;
     }
 
-    public AdjacencyListGraphVertex<T> getTo() {
+    public GraphVertex<T> getTo() {
         return to;
     }
 
-    public void setTo(AdjacencyListGraphVertex<T> to) {
+    public void setTo(GraphVertex<T> to) {
         this.to = to;
     }
 

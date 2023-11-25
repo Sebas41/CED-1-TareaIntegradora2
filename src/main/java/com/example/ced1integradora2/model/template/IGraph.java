@@ -20,10 +20,10 @@ public interface IGraph<T extends Comparable<T>> {
     public GraphVertex<T> searchVertex(T goal);
     public NaryTree<T> bfs(T source);
     public ArrayList<NaryTree<T>> dfs();
-    public void dfsVisit(AdjacencyListGraphVertex<T> source, NaryTree<T> tree);
-    public Map<AdjacencyListGraphVertex<T>,Double> dijkstraDistances(T source);
-    public Map<AdjacencyListGraphVertex<T>, AdjacencyListGraphVertex<T>> dijkstraPredecesors(T source);
+    public void dfsVisit(GraphVertex<T> source, NaryTree<T> tree);
+    public Map<GraphVertex<T>,Double> dijkstraDistances(T source);
+    public Map<GraphVertex<T>, GraphVertex<T>> dijkstraPredecesors(T source);
     public Double[][] floydWarshall();//El tamaño del grafo lo tengo dentro de la implementación
-    public NaryTree<AdjacencyListGraphVertex<T>> prim(T source);
-    public ArrayList<Edge<T>> kruskal();
+    //public NaryTree<GraphVertex<T>> prim(T source);
+    public ArrayList<Edge<T>> kruskal();//fijarse en matriz de adyacencia
 }
