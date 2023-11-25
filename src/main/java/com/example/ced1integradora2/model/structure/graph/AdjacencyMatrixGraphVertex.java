@@ -10,4 +10,6 @@ public class AdjacencyMatrixGraphVertex<T extends Comparable<T>> extends GraphVe
     public int compareTo(AdjacencyMatrixGraphVertex<T> o) {
         return getValue().compareTo(o.getValue());
     }
+
+    
 }

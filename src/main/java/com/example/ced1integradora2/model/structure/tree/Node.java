@@ -93,4 +93,20 @@ public class Node <T extends Comparable<T>>{
     public String toString(){
         return value.toString();
     }
+
+    public Double getValue(T i) {
+        Double value = null;
+        if (this.value.compareTo(i) == 0) {
+            value = (Double) this.value;
+        } else if (isLeaf()) {
+            boolean exit = false;
+            for (int j = 0; j < children.size() && !exit; j++) {
+                value = children.get(j).getValue(i);
+                if (value != null) {
+                    exit = true;
+                }
+            }
+        }
+        return value;
+    }
 }

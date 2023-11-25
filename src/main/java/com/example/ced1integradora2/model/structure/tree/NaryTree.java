@@ -1,5 +1,7 @@
 package com.example.ced1integradora2.model.structure.tree;
 
+import java.util.NoSuchElementException;
+
 public class NaryTree <T extends Comparable<T>>{
 
     public Node<T> root;
@@ -69,5 +71,26 @@ public class NaryTree <T extends Comparable<T>>{
             message = root.postOrder();
         }
         return message;
+    }
+
+    public boolean isEmpty() {
+        return true;
+    }
+
+    public double getValue(T i) {
+        if (root == null) {
+            throw new NoSuchElementException("The tree is empty");
+        } else {
+            Double value = root.getValue(i);
+            if (value != null) {
+                return value;
+            } else {
+                throw new NoSuchElementException("No element with the given key found");
+            }
+        }
+    }
+
+    public Node<T> getRoot() {
+        return root;
     }
 }
