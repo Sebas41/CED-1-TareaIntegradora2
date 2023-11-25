@@ -30,6 +30,7 @@ public class AdjacencyListGraph<T extends Comparable<T>> implements IGraph<T> {
             vertexes.add(new AdjacencyListGraphVertex<T>(value));
             status = true;
         }
+
         return status;
     }
 

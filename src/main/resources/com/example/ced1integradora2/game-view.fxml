@@ -25,5 +25,6 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <RadioButton layoutX="902.0" layoutY="192.0" mnemonicParsing="false" text="RadioButton" />
    </children>
 </AnchorPane>
