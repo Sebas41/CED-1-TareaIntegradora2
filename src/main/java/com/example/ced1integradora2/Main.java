@@ -20,7 +20,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
             Scene scene = new Scene(fxmlLoader.load(), v, v1);
             Stage stage = new Stage();
-            stage.setTitle("¡La Odisea de Tom!");
+            stage.setTitle("RUTA AMERICANA");
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
