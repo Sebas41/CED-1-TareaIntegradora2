@@ -13,6 +13,7 @@ public class GameMap {
 
     private IGraph<State> map;
     private HashMap<String, RadioButton> radioButtons;
+    private HashMap<String, State> states;
 
     public GameMap(Implementation implementation) {
         switch (implementation) {
@@ -25,6 +26,7 @@ public class GameMap {
         }
 
         radioButtons = new HashMap<>();
+        states = new HashMap<>();
         fillUpGraph();
     }
 
@@ -35,6 +37,8 @@ public class GameMap {
         radioButton.setLayoutX(alabama.getPosition().getX());
         radioButton.setLayoutY(alabama.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(alabama.getName());
+        states.put(alabama.getName(), alabama);
         radioButtons.put(alabama.getName(), radioButton);
 
         State arizona = new State("Arizona", new Position(213, 442));
@@ -43,6 +47,8 @@ public class GameMap {
         radioButton.setLayoutX(arizona.getPosition().getX());
         radioButton.setLayoutY(arizona.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(arizona.getName());
+        states.put(arizona.getName(), arizona);
         radioButtons.put(arizona.getName(), radioButton);
 
         State arkansas = new State("Arkansas", new Position(574, 434));
@@ -51,6 +57,8 @@ public class GameMap {
         radioButton.setLayoutX(arkansas.getPosition().getX());
         radioButton.setLayoutY(arkansas.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(arkansas.getName());
+        states.put(arkansas.getName(), arkansas);
         radioButtons.put(arkansas.getName(), radioButton);
 
         State california = new State("California", new Position(78, 361));
@@ -59,6 +67,8 @@ public class GameMap {
         radioButton.setLayoutX(california.getPosition().getX());
         radioButton.setLayoutY(california.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(california.getName());
+        states.put(california.getName(), california);
         radioButtons.put(california.getName(), radioButton);
 
         State carolinaDelNorte = new State("Carolina del Norte", new Position(832, 367));
@@ -67,6 +77,8 @@ public class GameMap {
         radioButton.setLayoutX(carolinaDelNorte.getPosition().getX());
         radioButton.setLayoutY(carolinaDelNorte.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(carolinaDelNorte.getName());
+        states.put(carolinaDelNorte.getName(), carolinaDelNorte);
         radioButtons.put(carolinaDelNorte.getName(), radioButton);
 
         State carolinaDelSur = new State("Carolina del Sur", new Position(819, 819));
@@ -75,6 +87,8 @@ public class GameMap {
         radioButton.setLayoutX(carolinaDelSur.getPosition().getX());
         radioButton.setLayoutY(carolinaDelSur.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(carolinaDelSur.getName());
+        states.put(carolinaDelSur.getName(), carolinaDelSur);
         radioButtons.put(carolinaDelSur.getName(), radioButton);
 
         State colorado = new State("Colorado", new Position(339, 310));
@@ -83,6 +97,8 @@ public class GameMap {
         radioButton.setLayoutX(colorado.getPosition().getX());
         radioButton.setLayoutY(colorado.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(colorado.getName());
+        states.put(colorado.getName(), colorado);
         radioButtons.put(colorado.getName(), radioButton);
 
         State connecticut = new State("Connecticut", new Position(902, 192));
@@ -91,6 +107,8 @@ public class GameMap {
         radioButton.setLayoutX(connecticut.getPosition().getX());
         radioButton.setLayoutY(connecticut.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(connecticut.getName());
+        states.put(connecticut.getName(), connecticut);
         radioButtons.put(connecticut.getName(), radioButton);
 
         State dakotaDelNorte = new State("Dakota del Norte", new Position(427, 427));
@@ -99,6 +117,8 @@ public class GameMap {
         radioButton.setLayoutX(dakotaDelNorte.getPosition().getX());
         radioButton.setLayoutY(dakotaDelNorte.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(dakotaDelNorte.getName());
+        states.put(dakotaDelNorte.getName(), dakotaDelNorte);
         radioButtons.put(dakotaDelNorte.getName(), radioButton);
 
         State dakotaDelSur = new State("Dakota del Sur", new Position(440, 187));
@@ -107,6 +127,8 @@ public class GameMap {
         radioButton.setLayoutX(dakotaDelSur.getPosition().getX());
         radioButton.setLayoutY(dakotaDelSur.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(dakotaDelSur.getName());
+        states.put(dakotaDelSur.getName(), dakotaDelSur);
         radioButtons.put(dakotaDelSur.getName(), radioButton);
 
         State delaware = new State("Delaware", new Position(878, 273));
@@ -115,6 +137,8 @@ public class GameMap {
         radioButton.setLayoutX(delaware.getPosition().getX());
         radioButton.setLayoutY(delaware.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(delaware.getName());
+        states.put(delaware.getName(), delaware);
         radioButtons.put(delaware.getName(), radioButton);
 
         State florida = new State("Florida", new Position(815, 568));
@@ -123,6 +147,8 @@ public class GameMap {
         radioButton.setLayoutX(florida.getPosition().getX());
         radioButton.setLayoutY(florida.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(florida.getName());
+        states.put(florida.getName(), florida);
         radioButtons.put(florida.getName(), radioButton);
 
         State georgia = new State("Georgia", new Position(748, 441));
@@ -131,6 +157,8 @@ public class GameMap {
         radioButton.setLayoutX(georgia.getPosition().getX());
         radioButton.setLayoutY(georgia.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(georgia.getName());
+        states.put(georgia.getName(), georgia);
         radioButtons.put(georgia.getName(), radioButton);
 
         State idaho = new State("Idaho", new Position(213, 213));
@@ -139,6 +167,8 @@ public class GameMap {
         radioButton.setLayoutX(idaho.getPosition().getX());
         radioButton.setLayoutY(idaho.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(idaho.getName());
+        states.put(idaho.getName(), idaho);
         radioButtons.put(idaho.getName(), radioButton);
 
         State illinois = new State("Illinois", new Position(625, 316));
@@ -147,6 +177,8 @@ public class GameMap {
         radioButton.setLayoutX(illinois.getPosition().getX());
         radioButton.setLayoutY(illinois.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(illinois.getName());
+        states.put(illinois.getName(), illinois);
         radioButtons.put(illinois.getName(), radioButton);
 
         State indiana = new State("Indiana", new Position(679, 679));
@@ -155,6 +187,8 @@ public class GameMap {
         radioButton.setLayoutX(indiana.getPosition().getX());
         radioButton.setLayoutY(indiana.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(indiana.getName());
+        states.put(indiana.getName(), indiana);
         radioButtons.put(indiana.getName(), radioButton);
 
         State iowa = new State("Iowa", new Position(548, 242));
@@ -163,6 +197,8 @@ public class GameMap {
         radioButton.setLayoutX(iowa.getPosition().getX());
         radioButton.setLayoutY(iowa.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(iowa.getName());
+        states.put(iowa.getName(), iowa);
         radioButtons.put(iowa.getName(), radioButton);
 
         State kansas = new State("Kansas", new Position(474, 327));
@@ -171,6 +207,8 @@ public class GameMap {
         radioButton.setLayoutX(kansas.getPosition().getX());
         radioButton.setLayoutY(kansas.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(kansas.getName());
+        states.put(kansas.getName(), kansas);
         radioButtons.put(kansas.getName(), radioButton);
 
         State kentucky = new State("Kentucky", new Position(710, 327));
@@ -179,6 +217,8 @@ public class GameMap {
         radioButton.setLayoutX(kentucky.getPosition().getX());
         radioButton.setLayoutY(kentucky.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(kentucky.getName());
+        states.put(kentucky.getName(), kentucky);
         radioButtons.put(kentucky.getName(), radioButton);
 
         State luisiana = new State("Luisiana", new Position(579, 496));
@@ -187,6 +227,8 @@ public class GameMap {
         radioButton.setLayoutX(luisiana.getPosition().getX());
         radioButton.setLayoutY(luisiana.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(luisiana.getName());
+        states.put(luisiana.getName(), luisiana);
         radioButtons.put(luisiana.getName(), radioButton);
 
         State maine = new State("Maine", new Position(914, 67));
@@ -195,6 +237,8 @@ public class GameMap {
         radioButton.setLayoutX(maine.getPosition().getX());
         radioButton.setLayoutY(maine.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(maine.getName());
+        states.put(maine.getName(), maine);
         radioButtons.put(maine.getName(), radioButton);
 
         State maryland = new State("Maryland", new Position(876, 291));
@@ -203,6 +247,8 @@ public class GameMap {
         radioButton.setLayoutX(maryland.getPosition().getX());
         radioButton.setLayoutY(maryland.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(maryland.getName());
+        states.put(maryland.getName(), maryland);
         radioButtons.put(maryland.getName(), radioButton);
 
         State massachusetts = new State("Massachusetts", new Position(903, 169));
@@ -211,6 +257,8 @@ public class GameMap {
         radioButton.setLayoutX(massachusetts.getPosition().getX());
         radioButton.setLayoutY(massachusetts.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(massachusetts.getName());
+        states.put(massachusetts.getName(), massachusetts);
         radioButtons.put(massachusetts.getName(), radioButton);
 
         State michigan = new State("Míchigan", new Position(684, 188));
@@ -219,6 +267,8 @@ public class GameMap {
         radioButton.setLayoutX(michigan.getPosition().getX());
         radioButton.setLayoutY(michigan.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(michigan.getName());
+        states.put(michigan.getName(), michigan);
         radioButtons.put(michigan.getName(), radioButton);
 
         State minnesota = new State("Minnesota", new Position(527, 185));
@@ -227,6 +277,8 @@ public class GameMap {
         radioButton.setLayoutX(minnesota.getPosition().getX());
         radioButton.setLayoutY(minnesota.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(minnesota.getName());
+        states.put(minnesota.getName(), minnesota);
         radioButtons.put(minnesota.getName(), radioButton);
 
         State misisipi = new State("Misisipi", new Position(641, 465));
@@ -235,6 +287,8 @@ public class GameMap {
         radioButton.setLayoutX(misisipi.getPosition().getX());
         radioButton.setLayoutY(misisipi.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(misisipi.getName());
+        states.put(misisipi.getName(), misisipi);
         radioButtons.put(misisipi.getName(), radioButton);
 
         State misuri = new State("Misuri", new Position(582, 326));
@@ -243,6 +297,8 @@ public class GameMap {
         radioButton.setLayoutX(misuri.getPosition().getX());
         radioButton.setLayoutY(misuri.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(misuri.getName());
+        states.put(misuri.getName(), misuri);
         radioButtons.put(misuri.getName(), radioButton);
 
         State montana = new State("Montana", new Position(280, 114));
@@ -251,6 +307,8 @@ public class GameMap {
         radioButton.setLayoutX(montana.getPosition().getX());
         radioButton.setLayoutY(montana.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(montana.getName());
+        states.put(montana.getName(), montana);
         radioButtons.put(montana.getName(), radioButton);
 
         State nebraska = new State("Nebraska", new Position(474, 327));
@@ -259,6 +317,8 @@ public class GameMap {
         radioButton.setLayoutX(nebraska.getPosition().getX());
         radioButton.setLayoutY(nebraska.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nebraska.getName());
+        states.put(nebraska.getName(), nebraska);
         radioButtons.put(nebraska.getName(), radioButton);
 
         State nevada = new State("Nevada", new Position(144, 283));
@@ -267,6 +327,8 @@ public class GameMap {
         radioButton.setLayoutX(nevada.getPosition().getX());
         radioButton.setLayoutY(nevada.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nevada.getName());
+        states.put(nevada.getName(), nevada);
         radioButtons.put(nevada.getName(), radioButton);
 
         State nuevaHampshire = new State("Nueva Hampshire", new Position(897, 133));
@@ -275,6 +337,8 @@ public class GameMap {
         radioButton.setLayoutX(nuevaHampshire.getPosition().getX());
         radioButton.setLayoutY(nuevaHampshire.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nuevaHampshire.getName());
+        states.put(nuevaHampshire.getName(), nuevaHampshire);
         radioButtons.put(nuevaHampshire.getName(), radioButton);
 
         State nuevaJersey = new State("Nueva Jersey", new Position(879, 244));
@@ -283,6 +347,8 @@ public class GameMap {
         radioButton.setLayoutX(nuevaJersey.getPosition().getX());
         radioButton.setLayoutY(nuevaJersey.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nuevaJersey.getName());
+        states.put(nuevaJersey.getName(), nuevaJersey);
         radioButtons.put(nuevaJersey.getName(), radioButton);
 
         State nuevoMexico = new State("Nuevo México", new Position(317, 455));
@@ -291,6 +357,8 @@ public class GameMap {
         radioButton.setLayoutX(nuevoMexico.getPosition().getX());
         radioButton.setLayoutY(nuevoMexico.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nuevoMexico.getName());
+        states.put(nuevoMexico.getName(), nuevoMexico);
         radioButtons.put(nuevoMexico.getName(), radioButton);
 
         State nuevaYork = new State("Nueva York", new Position(835, 172));
@@ -299,6 +367,8 @@ public class GameMap {
         radioButton.setLayoutX(nuevaYork.getPosition().getX());
         radioButton.setLayoutY(nuevaYork.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(nuevaYork.getName());
+        states.put(nuevaYork.getName(), nuevaYork);
         radioButtons.put(nuevaYork.getName(), radioButton);
 
         State ohio = new State("Ohio", new Position(733, 259));
@@ -307,6 +377,8 @@ public class GameMap {
         radioButton.setLayoutX(ohio.getPosition().getX());
         radioButton.setLayoutY(ohio.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(ohio.getName());
+        states.put(ohio.getName(), ohio);
         radioButtons.put(ohio.getName(), radioButton);
 
         State oklahoma = new State("Oklahoma", new Position(550, 354));
@@ -315,6 +387,8 @@ public class GameMap {
         radioButton.setLayoutX(oklahoma.getPosition().getX());
         radioButton.setLayoutY(oklahoma.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(oklahoma.getName());
+        states.put(oklahoma.getName(), oklahoma);
         radioButtons.put(oklahoma.getName(), radioButton);
 
         State oregon = new State("Oregón", new Position(76, 168));
@@ -323,6 +397,8 @@ public class GameMap {
         radioButton.setLayoutX(oregon.getPosition().getX());
         radioButton.setLayoutY(oregon.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(oregon.getName());
+        states.put(oregon.getName(), oregon);
         radioButtons.put(oregon.getName(), radioButton);
 
         State pensilvania = new State("Pensilvania", new Position(812, 223));
@@ -331,6 +407,8 @@ public class GameMap {
         radioButton.setLayoutX(pensilvania.getPosition().getX());
         radioButton.setLayoutY(pensilvania.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(pensilvania.getName());
+        states.put(pensilvania.getName(), pensilvania);
         radioButtons.put(pensilvania.getName(), radioButton);
 
         State rhodeIsland = new State("Rhode Island", new Position(916, 186));
@@ -339,6 +417,8 @@ public class GameMap {
         radioButton.setLayoutX(rhodeIsland.getPosition().getX());
         radioButton.setLayoutY(rhodeIsland.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(rhodeIsland.getName());
+        states.put(rhodeIsland.getName(), rhodeIsland);
         radioButtons.put(rhodeIsland.getName(), radioButton);
 
         State tennessee = new State("Tennessee", new Position(692, 377));
@@ -347,6 +427,8 @@ public class GameMap {
         radioButton.setLayoutX(tennessee.getPosition().getX());
         radioButton.setLayoutY(tennessee.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(tennessee.getName());
+        states.put(tennessee.getName(), tennessee);
         radioButtons.put(tennessee.getName(), radioButton);
 
         State texas = new State("Texas", new Position(467, 537));
@@ -355,6 +437,8 @@ public class GameMap {
         radioButton.setLayoutX(texas.getPosition().getX());
         radioButton.setLayoutY(texas.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(texas.getName());
+        states.put(texas.getName(), texas);
         radioButtons.put(texas.getName(), radioButton);
 
         State utah = new State("Utah", new Position(228, 289));
@@ -363,6 +447,8 @@ public class GameMap {
         radioButton.setLayoutX(utah.getPosition().getX());
         radioButton.setLayoutY(utah.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(utah.getName());
+        states.put(utah.getName(), utah);
         radioButtons.put(utah.getName(), radioButton);
 
         State vermont = new State("Vermont", new Position(879, 137));
@@ -371,6 +457,8 @@ public class GameMap {
         radioButton.setLayoutX(vermont.getPosition().getX());
         radioButton.setLayoutY(vermont.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(vermont.getName());
+        states.put(vermont.getName(), vermont);
         radioButtons.put(vermont.getName(), radioButton);
 
         State virginia = new State("Virginia", new Position(821, 307));
@@ -379,6 +467,8 @@ public class GameMap {
         radioButton.setLayoutX(virginia.getPosition().getX());
         radioButton.setLayoutY(virginia.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(virginia.getName());
+        states.put(virginia.getName(), virginia);
         radioButtons.put(virginia.getName(), radioButton);
 
         State virginiaOccidental = new State("Virginia Occidental", new Position(781, 287));
@@ -387,6 +477,8 @@ public class GameMap {
         radioButton.setLayoutX(virginiaOccidental.getPosition().getX());
         radioButton.setLayoutY(virginiaOccidental.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(virginiaOccidental.getName());
+        states.put(virginiaOccidental.getName(), virginiaOccidental);
         radioButtons.put(virginiaOccidental.getName(), radioButton);
 
         State washington = new State("Washington", new Position(126, 81));
@@ -395,6 +487,8 @@ public class GameMap {
         radioButton.setLayoutX(washington.getPosition().getX());
         radioButton.setLayoutY(washington.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(washington.getName());
+        states.put(washington.getName(), washington);
         radioButtons.put(washington.getName(), radioButton);
 
         State wisconsin = new State("Wisconsin", new Position(602, 172));
@@ -403,6 +497,8 @@ public class GameMap {
         radioButton.setLayoutX(wisconsin.getPosition().getX());
         radioButton.setLayoutY(wisconsin.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(wisconsin.getName());
+        states.put(wisconsin.getName(), wisconsin);
         radioButtons.put(wisconsin.getName(), radioButton);
 
         State wyoming = new State("Wyoming", new Position(303, 229));
@@ -411,6 +507,8 @@ public class GameMap {
         radioButton.setLayoutX(wyoming.getPosition().getX());
         radioButton.setLayoutY(wyoming.getPosition().getY());
         radioButton.setCursor(Cursor.HAND);
+        radioButton.setText(wyoming.getName());
+        states.put(wyoming.getName(), wyoming);
         radioButtons.put(wyoming.getName(), radioButton);
 
         map.addEdge(washington, oregon, 5.0);
@@ -471,5 +569,13 @@ public class GameMap {
 
     public HashMap<String, RadioButton> getRadioButtons() {
         return radioButtons;
+    }
+
+    public IGraph<State> getMap() {
+        return map;
+    }
+
+    public HashMap<String, State> getStates() {
+        return states;
     }
 }

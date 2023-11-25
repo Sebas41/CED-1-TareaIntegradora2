@@ -14,17 +14,16 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4eaff" height="144.0" layoutX="13.0" layoutY="517.0" stroke="BLACK" strokeType="INSIDE" width="234.0" />
-      <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="442.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="carImage" fitHeight="29.0" fitWidth="25.0" layoutX="442.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/car.png" />
+            <Image  url="@../../../images/car.png" />
          </image>
       </ImageView>
-      <Button layoutX="54.0" layoutY="588.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="144.0" text="Go" />
+      <Button fx:id="goButton" layoutX="54.0" layoutY="588.0" mnemonicParsing="false" onAction="#onGoButtonClicked" prefHeight="59.0" prefWidth="144.0" text="Go" />
       <Label fx:id="msg" alignment="CENTER" layoutX="13.0" layoutY="518.0" prefHeight="83.0" prefWidth="234.0" text="Enjoy the trip!">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Label>
-      <RadioButton layoutX="902.0" layoutY="192.0" mnemonicParsing="false" text="RadioButton" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.ced1integradora2.model.template;
 
+import com.example.ced1integradora2.model.Position;
 import com.example.ced1integradora2.model.structure.graph.AdjacencyMatrixGraphVertex;
 import com.example.ced1integradora2.model.structure.graph.Edge;
 import com.example.ced1integradora2.model.structure.graph.AdjacencyListGraphVertex;
