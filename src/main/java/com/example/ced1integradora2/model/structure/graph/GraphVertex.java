@@ -2,10 +2,10 @@ package com.example.ced1integradora2.model.structure.graph;
 
 import java.util.ArrayList;
 
-public class GraphVertex<T extends Comparable<T>> {
+public class GraphVertex<T extends Comparable<T>>{
     private T value;
     private Double distance;
-    private AdjacencyListGraphVertex<T> predecesor;
+    private GraphVertex<T> predecesor;
     private ColorType colorType;
 
     public GraphVertex(T value){
@@ -37,11 +37,11 @@ public class GraphVertex<T extends Comparable<T>> {
         this.distance = distance;
     }
 
-    public AdjacencyListGraphVertex<T> getPredecesor() {
+    public GraphVertex<T> getPredecesor() {
         return predecesor;
     }
 
-    public void setPredecesor(AdjacencyListGraphVertex<T> predecesor) {
+    public void setPredecesor(GraphVertex<T> predecesor) {
         this.predecesor = predecesor;
     }
 
