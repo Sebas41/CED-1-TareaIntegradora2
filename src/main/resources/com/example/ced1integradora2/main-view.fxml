@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="402.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/attemp1.jpg" />
+               </image></ImageView>
+            <VBox prefHeight="402.0" prefWidth="292.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="290.0" text="¡Bienvenido a &quot;La Odisea de Tom&quot;!" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="140.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="247.0" text="Selecciona una implementación del grafo:" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </VBox.margin></Label>
+                  <ComboBox prefWidth="150.0" promptText="Selecciona el modo">
+                     <VBox.margin>
+                        <Insets left="70.0" top="20.0" />
+                     </VBox.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Matriz de Adyacencia" />
+                              <String fx:value="Lista de Adyacencia" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" text="¡Jugar!">
+                     <VBox.margin>
+                        <Insets left="123.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</StackPane>
