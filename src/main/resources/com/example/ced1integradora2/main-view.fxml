@@ -14,11 +14,11 @@
          <children>
             <ImageView fitHeight="402.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/attemp1.jpg" />
+                  <Image url="@../../../images/LogoJuego.png" />
                </image></ImageView>
             <VBox prefHeight="402.0" prefWidth="292.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="290.0" text="¡Bienvenido a &quot;La Odisea de Tom&quot;!" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="290.0" text="¡Bienvenido a Ruta Americana" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
